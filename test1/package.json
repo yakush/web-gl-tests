@@ -9,6 +9,9 @@
   },
   "author": "",
   "license": "ISC",
+  "dependencies": {
+    "gl-matrix": "^2.4.0"
+  },
   "devDependencies": {
     "babelify": "^7.3.0",
     "uglify-js": "^3.0.27",
