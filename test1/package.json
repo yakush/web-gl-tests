@@ -1,0 +1,29 @@
+{
+  "name": "test1",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "watch": "watchify src/app.js -d -o bundle.js -v [ babelify --presets [env] ]",
+    "build": "browserify src/app.js -t [ babelify --presets env ] | uglifyjs -mco bundle.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "babelify": "^7.3.0",
+    "uglify-js": "^3.0.27",
+    "watchify": "^3.9.0"
+  },
+  "browserify": {
+    "transform": [
+      [
+        "babelify",
+        {
+          "presets": [
+            "env"
+          ]
+        }
+      ]
+    ]
+  }
+}
