@@ -4,8 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "watch": "watchify src/app.js -d -o bundle.js -v [ babelify --presets [env] ]",
-    "build": "browserify src/app.js -t [ babelify --presets env ] | uglifyjs -mco bundle.js"
+    "watch": "watchify src/app.js -d -o build/bundle.js -v [ babelify --presets [env] ]",
+    "build": "browserify src/app.js -t [ babelify --presets env ] | uglifyjs -mco build/bundle.js"
   },
   "author": "",
   "license": "ISC",
@@ -13,7 +13,9 @@
     "gl-matrix": "^2.4.0"
   },
   "devDependencies": {
+    "babel-preset-env": "^1.6.0",
     "babelify": "^7.3.0",
+    "browserify": "^14.4.0",
     "uglify-js": "^3.0.27",
     "watchify": "^3.9.0"
   },
