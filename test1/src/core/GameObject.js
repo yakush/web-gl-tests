@@ -1,7 +1,13 @@
 import { Transform } from './Transform'
+import { Component } from './Component'
 
 export class GameObject {
 
+    /**
+     * 
+     * @param {*} name 
+     * @param {Component=} components 
+     */
     constructor(name, ...components) {
         
         this._transform = new Transform(this);

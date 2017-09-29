@@ -4,9 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "watch": "rimraf build && mkdirp build && watchify src/app.js -d -o build/bundle.js -v [ babelify --presets [env] ]",
-    "debug": "rimraf build && mkdirp build && browserify src/app.js -d  -t [ babelify --presets env ] -o build/bundle.js",
-    "build": "rimraf build && mkdirp build && browserify src/app.js -t [ babelify --presets env ] | uglifyjs -mco build/bundle.js"
+    "watch": "rimraf build && mkdirp build && watchify   src/app.js -p tsify -t [ babelify --presets env ] -o build/bundle.js -d -v",
+    "debug": "rimraf build && mkdirp build && browserify src/app.js -p tsify -t [ babelify --presets env ] -o build/bundle.js -d",
+    "build": "rimraf build && mkdirp build && browserify src/app.js -p tsify -t [ babelify --presets env ] | uglifyjs -mco build/bundle.js"
   },
   "author": "",
   "license": "ISC",
@@ -19,6 +19,8 @@
     "browserify": "^14.4.0",
     "mkdirp": "^0.5.1",
     "rimraf": "^2.6.1",
+    "tsify": "^3.0.3",
+    "typescript": "^2.5.3",
     "uglify-js": "^3.0.27",
     "watchify": "^3.9.0"
   },

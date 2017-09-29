@@ -1,5 +1,7 @@
 import * as glMatrix from 'gl-matrix';
 import { Renderer } from './core/Renderer';
+import { Game } from './core/Game';
+import { Scene } from './core/Scene';
 import { GameObject } from './core/GameObject';
 import { Component } from './core/Component';
 import { Transform } from './core/Transform';
@@ -44,6 +46,14 @@ class A {
 
     snoop() {
         console.log('snooping on A');
+    }
+
+    test(a) {
+        console.log("just ", a);
+    }
+
+    test(a, b) {
+        console.log("wow ", a, b);
     }
 }
 
@@ -99,35 +109,19 @@ class App {
     }
 
     onLoad() {
-        console.log("worekf!");
+        
 
-        //
-        // get webgl context
-        //
-        this.canvas = document.getElementById('gl-canvas');
-        if (!this.canvas) {
-            throw new Error("no canvas element found");
-        }
+        let go = new GameObject("me", new Camera());
+        let s = new Scene();
+        s.transform.addChild(go.transform);
 
-        this.gl = this.canvas.getContext('webgl') || this.canvas.getContext('experimental-webgl');
-        if (!this.gl) {
-            alert('Unable to initialize WebGL. Your browser may not support it.');
-            throw new Error("webgl not supported");
-        }
-        console.log("WEBGL VERSION: ", this.gl.getParameter(this.gl.VERSION));
+        this.game = new Game('gl-canvas');
+        this.game.start();
+        this.game.scene = s;
+    }
 
-        //
-        // init a canvas
-        //
-        this.renderer = new Renderer(this.gl);
-
-        /*
-        this.renderer.startLoop();
-
-        setTimeout(
-            x => { this.renderer.stopLoop() }
-            , 2000);
-        */
+    onUnload() {
+        this.game.stop();
     }
 }
 

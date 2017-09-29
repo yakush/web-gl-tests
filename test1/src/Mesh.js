@@ -1,32 +1,33 @@
-import { GlObject } from './GlObject';
+import { RenderableComponent } from './core/RenderableComponent';
 
-export class Mesh extends GlObject {
+export class Mesh extends RenderableComponent {
 
     constructor(mesh, material) {
+        super();
         this.mesh = mesh;
         this.material = material;
     }
 
-    load(gl) {
+    load(renderer) {
     }
 
-    unload(gl) {
+    unload(renderer) {
     }
 
 
-    bind(gl) {
+    bind(renderer) {
         material.bind(gl);
         mesh.bind(gl);
     }
-    unbind(gl) {
+    unbind(renderer) {
         material.unbind(gl);
         mesh.unbind(gl);
     }
 
-    update(gl, deltaTime) {
+    update(renderer, deltaTime) {
 
     }
-    render() {
+    render(renderer) {
         material.render();
         mesh.render();
     }
